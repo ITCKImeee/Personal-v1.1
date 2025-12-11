@@ -1,0 +1,477 @@
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="description" content="Portofolio dan kontak Gamaliel Kurniawan Parapak"/>
+  <meta name="theme-color" content="#ffffff"/>
+  <title>
+   Gamaliel Kurniawan Parapak
+  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet"/>
+  <style>
+        :root {
+            --bg: #ffffff;
+            --text: #0f172a;
+            --muted-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --link: #0d6efd;
+            --hero-overlay: rgba(0,0,0,0.35);
+            --image-loader-overlay: rgba(0,0,0,0.08);
+            --about-bg: rgba(255,255,255,0.55);
+            --about-border: rgba(226,232,240,0.6);
+        }
+        [data-theme="dark"] {
+            --bg: #0b1220;
+            --text: #e5edf7;
+            --muted-bg: #0f172a;
+            --card-bg: #111827;
+            --border: #1f2937;
+            --link: #60a5fa;
+            --hero-overlay: rgba(0,0,0,0.55);
+            --image-loader-overlay: rgba(255,255,255,0.06);
+            --about-bg: rgba(17,24,39,0.45);
+            --about-border: rgba(31,41,55,0.6);
+        }
+        html, body {
+            height: 100%;
+            background: var(--bg);
+            color: var(--text);
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+            scroll-behavior: smooth;
+            transition: background-color .3s ease, color .3s ease;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-family: 'Poppins', 'Inter', sans-serif;
+            color: var(--text) !important;
+        }
+        .themed-navbar {
+            background-color: var(--muted-bg) !important;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-link {
+            color: var(--text) !important;
+        }
+        .bg-light { background-color: var(--muted-bg) !important; }
+        .hero {
+            background: url('LATAR.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 140px 0 260px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--hero-overlay) 60%, var(--hero-overlay) 100%);
+        }
+        .hero .container { position: relative; z-index: 1; }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Poppins', 'Inter', sans-serif;
+            color: #ffffff;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 24px rgba(0,0,0,.15);
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: var(--text);
+            font-family: 'Poppins', 'Inter', sans-serif;
+        }
+        .card { 
+            background: var(--card-bg);
+            border-color: var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            --bs-card-bg: var(--card-bg);
+            --bs-card-border-color: var(--border);
+            --bs-card-color: var(--text);
+            --bs-card-title-color: var(--text);
+            --bs-card-subtitle-color: var(--text);
+            color: var(--text);
+            transition: transform .2s ease, box-shadow .2s ease, background-color .3s ease;
+        }
+        .card-img-top {
+            object-fit: cover;
+            height: 200px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .card:hover { 
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,.18);
+        }
+        .square-image {
+            width: 500px;         
+            height: 500px;        
+            object-fit: cover;    
+        }
+        .image-wrapper {
+            width: 350px;         
+            height: 350px;        
+            overflow: hidden;     
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,.12);
+            position: relative;
+        }
+        
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;    
+            transition: transform .4s ease;
+        }
+        .image-wrapper:hover img { transform: scale(1.05); }
+
+        #page-loader {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(1000px 500px at 50% -200px, #94a3b8 0%, var(--bg) 60%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity .6s ease, visibility .6s ease;
+        }
+        #page-loader.hidden { opacity: 0; visibility: hidden; }
+        .loader {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 6px solid rgba(255,255,255,.25);
+            border-top-color: var(--link);
+            animation: spin 1s linear infinite;
+            margin-bottom: 12px;
+        }
+        .loader-sm { width: 36px; height: 36px; border-width: 4px; margin-bottom: 0; }
+        .loader-text { font-weight: 700; letter-spacing: .04em; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .image-loader {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--image-loader-overlay);
+            backdrop-filter: blur(2px);
+            border-radius: inherit;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+        .image-loader.hidden { opacity: 0; visibility: hidden; }
+        footer, footer p { color: var(--text); }
+        .card-body, .card-title, .card-text { color: var(--text); }
+        .card a { color: var(--link); }
+        .card-title { font-family: 'Poppins', 'Inter', sans-serif; font-weight: 700; font-size: 1.25rem; margin-bottom: .25rem; }
+        .card-text { font-family: 'Inter', sans-serif; font-weight: 400; }
+        .card-divider { height: 1px; background: var(--border); margin: .5rem 0 1rem; }
+        #about { margin-top: -220px; }
+        #about .container { background: var(--about-bg); border: 1px solid var(--about-border); border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,.12); padding: 24px; backdrop-filter: blur(6px); }
+        @media (max-width: 768px) {
+            .hero { padding: 120px 0 200px; }
+            #about { margin-top: -140px; }
+            #about .container { padding: 16px; border-radius: 12px; }
+        }
+        #about { margin-top: -220px; }
+        #about .container { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 12px 28px rgba(0,0,0,.18); padding: 24px; }
+        @media (max-width: 768px) {
+            .hero { padding: 120px 0 200px; }
+            #about { margin-top: -140px; }
+            #about .container { padding: 16px; border-radius: 12px; }
+        }
+  </style>
+ </head>
+ <body>
+  <div id="page-loader" role="status" aria-live="polite" aria-label="Memuat halaman">
+    <div class="loader"></div>
+    <div class="loader-text">Memuat...</div>
+  </div>
+  <nav class="navbar navbar-expand-lg themed-navbar">
+   <div class="container">
+    <a class="navbar-brand" href="#">
+     Gamaliel Kurniawan Parapak
+    </a>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+     <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+      <li class="nav-item">
+       <a class="nav-link" href="#about">
+        About Me
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#portfolio">
+        Portfolio
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#gallery">
+        Gallery
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#contact">
+        Contact
+       </a>
+      </li>
+      <li class="nav-item ms-lg-3">
+       <button id="themeToggle" class="btn btn-outline-secondary" type="button" aria-label="Ubah tema">
+        <i class="fas fa-moon"></i>
+       </button>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </nav>
+  <header class="hero">
+   <div class="container">
+    <h1>
+     Gamaliel Kurniawan Parapak
+    </h1>
+    <p>
+     Orang Sigma
+    </p>
+   </div>
+  </header>
+  <section class="py-5" id="about">
+   <div class="container">
+    <div class="row">
+    <div class="col-md-4 text-center">
+     <img alt="Foto profil Gamaliel Kurniawan Parapak" class="profile-img" height="150" src="Profdil.jpg" width="150" loading="lazy"/>
+    </div>
+    <div class="col-md-8">
+     <h2 class="section-title">
+      About Me
+     </h2>
+     <p>
+       Hola, nama saya Gamaliel atau sering dipanggil EL. Saya lahir di Biak, Papua. Saya sangat suka teknologi, terutama gadget. Saya bisa membuat proyek seperti hand landmark untuk mengendalikan perangkat dengan gerakan tangan, serta membuat game sederhana. Saya cukup jago dalam memodifikasi berbagai hal. Saya menikmati bermain game, menonton film, dan menjelajahi tempat baru. Cita-cita saya adalah mendapatkan pekerjaan dengan gaji 1 miliar/bulan.
+     </p>
+    </div>
+   </div>
+  </div>
+ </section>
+ <section class="py-5" id="portfolio">
+  <div class="container">
+    <h2 class="section-title text-center">
+     Portfolio
+    </h2>
+    <div class="row">
+     <div class="col-md-4">
+      <div class="card">
+       <img alt="Cuplikan aplikasi kalkulator Python Tkinter" class="card-img-top" height="200" src="portofolio 1.jpg" width="350" loading="lazy"/>
+       <div class="card-body">
+        <h5 class="card-title">
+         Kalkulator
+        </h5>
+        <div class="card-divider"></div>
+        <p class="card-text">
+         Membuat kalkulator menggunakan Python dan Tkinter untuk perhitungan dasar seperti penjumlahan, pengurangan, pembagian, dan perkalian.
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="col-md-4">
+      <div class="card">
+       <img alt="Cuplikan aplikasi Hand Landmark menggunakan Python, Mediapipe, OpenCV" class="card-img-top" height="200" src="portofolio 2.jpg" width="350" loading="lazy"/>
+       <div class="card-body">
+        <h5 class="card-title">
+         Hand Landmark
+        </h5>
+        <div class="card-divider"></div>
+        <p class="card-text">
+         Hand Landmark dibuat menggunakan Python, MediaPipe untuk mendeteksi tangan, dan OpenCV untuk menggambar outline serta tulang. Program dapat digunakan untuk berbagai tujuan, misalnya mengatur volume dengan gerakan tangan.
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="col-md-4">
+      <div class="card">
+       <img alt="Ilustrasi proyek game Unity" class="card-img-top" height="200" src="R.jpeg" width="350" loading="lazy"/>
+       <div class="card-body">
+        <h5 class="card-title">
+         Certificate
+        </h5>
+        <div class="card-divider"></div>
+        <p class="card-text">
+         Juara III pada Lomba Hasil Karya Siswa Semester I Tahun Ajaran 2024/2025 tingkat nasional untuk kategori Kelas VIII. Karya yang diikutsertakan berupa game interaktif yang dikembangkan menggunakan platform Scratch
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="bg-light py-5" id="gallery">
+   <div class="container">
+    <h2 class="section-title text-center">
+     Gallery
+    </h2>
+     <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="image-wrapper">
+                <img alt="Pantai dengan air biru jernih dan pasir putih" class="img-fluid" src="gallery 1.jpg" loading="lazy"/>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="image-wrapper">
+                <img alt="Pemandangan pantai tenang dengan air biru jernih" class="img-fluid" src="gallery 2.jpg" loading="lazy"/>
+            </div>
+        </div>
+     <div class="col-md-4 mb-4">
+        <div class="image-wrapper">
+            <img alt="Bunga berwarna-warni yang sedang mekar" class="img-fluid" height="200" src="gallery 3.jpg" width="350" loading="lazy"/>
+        </div>
+     </div>
+     <div class="col-md-4 mb-4">
+        <div class="image-wrapper">
+            <img alt="Pantai dengan suasana tenang dan air jernih" class="img-fluid" src="gallery 4.jpg" loading="lazy"/>
+        </div>
+    </div>
+     <div class="col-md-4 mb-4">
+        <div class="image-wrapper">
+            <img alt="Jalur hutan dengan pepohonan tinggi dan cahaya matahari" class="img-fluid" height="200" src="Gallery 5.jpg" width="350" loading="lazy"/>
+        </div>
+     </div>
+     <div class="col-md-4 mb-4">
+        <div class="image-wrapper">
+            <img alt="Pasar ramai dengan berbagai stan berwarna-warni" class="img-fluid" src="Gallery 6.jpg" loading="lazy"/>
+        </div>
+    </div>
+    </div>
+   </div>
+  </section>
+  <section class="bg-light py-5" id="contact">
+   <div class="container">
+    <h2 class="section-title text-center">
+     Contact
+    </h2>
+    <div class="row">
+     <div class="col-md-6 offset-md-3 text-center">
+      <p>
+       <a class="btn btn-success mb-3" href="https://wa.me/6281354718652" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp">
+        </i>
+        WhatsApp
+       </a>
+      </p>
+      <p>
+       <a class="btn btn-danger mb-3" href="mailto:gamalielkurniawan@gmail.com" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-envelope">
+        </i>
+        Email
+       </a>
+      </p>
+      <p>
+       <a class="btn btn-primary mb-3" href="https://www.instagram.com/xanz.el" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram">
+        </i>
+        Instagram
+       </a>
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <footer class="text-center py-4">
+   <div class="container">
+    <p>
+    Desember/11/2025
+    </p>
+  </footer>
+  <script crossorigin="anonymous" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+Y4R7OM7x1p1h7Y1Lkltp1I1hx0b6" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script>
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+      var btn = document.getElementById('themeToggle');
+      if (!btn) return;
+      var icon = btn.querySelector('i');
+      if (theme === 'dark') {
+        btn.classList.remove('btn-outline-secondary');
+        btn.classList.add('btn-outline-light');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        btn.setAttribute('aria-label', 'Ubah ke mode terang');
+      } else {
+        btn.classList.remove('btn-outline-light');
+        btn.classList.add('btn-outline-secondary');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        btn.setAttribute('aria-label', 'Ubah ke mode gelap');
+      }
+      var themeColor = theme === 'dark' ? '#0b1220' : '#ffffff';
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', themeColor);
+    }
+    (function() {
+      var stored = localStorage.getItem('theme');
+      var preferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var initial = stored ? stored : preferred;
+      applyTheme(initial);
+      document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('themeToggle');
+        if (btn) {
+          btn.addEventListener('click', function() {
+            var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            var next = current === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', next);
+            applyTheme(next);
+          });
+        }
+
+        var wrappers = document.querySelectorAll('#gallery .image-wrapper');
+        wrappers.forEach(function(wrapper){
+          var img = wrapper.querySelector('img');
+          if (!img) return;
+          var overlay = document.createElement('div');
+          overlay.className = 'image-loader hidden';
+          overlay.innerHTML = '<div class="loader loader-sm"></div>';
+          wrapper.appendChild(overlay);
+          function hide(){ overlay.classList.add('hidden'); }
+          function show(){ overlay.classList.remove('hidden'); }
+          if (img.complete && img.naturalWidth > 0) {
+            hide();
+          } else {
+            show();
+            img.addEventListener('load', hide, { once: true });
+            img.addEventListener('error', hide, { once: true });
+          }
+        });
+      });
+      window.addEventListener('load', function() {
+        var pl = document.getElementById('page-loader');
+        if (pl) {
+          pl.classList.add('hidden');
+          setTimeout(function(){ try { pl.remove(); } catch(e){} }, 700);
+        }
+      });
+    })();
+  </script>
+  </body>
+ </html>
